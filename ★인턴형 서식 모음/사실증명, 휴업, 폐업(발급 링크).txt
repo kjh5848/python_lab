@@ -1,0 +1,9 @@
+사실증명
+https://www.gov.kr/mw/AA020InfoCappView.do?HighCtgCD=&CappBizCD=12100000352
+
+휴업사실증명
+https://www.gov.kr/mw/AA020InfoCappView.do?HighCtgCD=&CappBizCD=12100000017
+
+
+폐업사실증명
+https://www.gov.kr/mw/AA020InfoCappView.do?HighCtgCD=&CappBizCD=12100000019
