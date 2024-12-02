@@ -3,7 +3,7 @@ from hwp_service import HwpService
 import os
 
 def 서식33인턴신청서(self, excel_path, form_path):
-        for index, row in self.excel_service.엑셀열기(excel_path, "참여자 명단").iterrows():
+        for index, row in self.excel_service.엑셀열기(excel_path, "참여자 명단",0).iterrows():
             self.hwp_service.파일열기("[서식33] 인턴형 일경험 참여신청서", os.path.dirname(form_path))
             
             if not row['성명']:
