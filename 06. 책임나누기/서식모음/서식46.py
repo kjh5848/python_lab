@@ -4,7 +4,7 @@ import os
 
 
 def 서식46인턴확인서(self, excel_path, form_path):
-    for index, row in self.excel_service.엑셀열기(excel_path, "참여자 명단").iterrows():
+    for index, row in self.excel_service.엑셀열기(excel_path, "참여자 명단",0).iterrows():
         self.hwp_service.파일열기("[서식46] 인턴형 참여청년 확인서", os.path.dirname(form_path))
 
         if not row['성명']:
