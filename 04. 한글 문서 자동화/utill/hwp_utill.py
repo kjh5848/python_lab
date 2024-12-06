@@ -27,10 +27,7 @@ class HwpUtill:
     def 세로누름틀생성(hwp, 시작인덱스 , 필드이름, 개수):
         for i in range(개수):
             field_name = f"{필드이름}_{시작인덱스 + i}"
-            
-            # 누름틀 필드 생성 (현재 커서 위치에 삽입)
             hwp.CreateField(필드이름, "", field_name)
-            print(f"Inserted field: {field_name}")
             hwp.HAction.Execute("MoveDown", hwp.HParameterSet.HFindReplace.HSet)
 
     def 닫기(self):
