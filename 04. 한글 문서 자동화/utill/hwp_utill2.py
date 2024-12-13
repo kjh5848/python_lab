@@ -3,10 +3,13 @@ import os
 
 class HwpUtill:
     def __init__(self):
-        self.hwp = win32.gencache.EnsureDispatch("hwpframe.hwpobject")
-        self.hwp.RegisterModule("FilePathCheckDLL", "FilePathCheckerModuleExample")
-        self.hwp.XHwpWindows.Item(0).Visible = True  # 한글 창을 보이게 설정
-
+        try:
+            self.hwp = win32.gencache.EnsureDispatch("hwpframe.hwpobject")
+            self.hwp.RegisterModule("FilePathCheckDLL", "FilePathCheckerModuleExample")
+            self.hwp.XHwpWindows.Item(0).Visible = True  # 한글 창을 보이게 설정
+            print("Hwp COM object initialized successfully")
+        except Exception as e:
+            print(f"Failed to initialize Hwp COM object: {e}")
     def 파일열기(self, file_name, file_path):
         file_path = fr'{file_path}\{file_name}.hwp'
         return self.hwp.Open(file_path)
@@ -24,27 +27,22 @@ class HwpUtill:
         except Exception as e:
             print(f"Error saving file {new_file_name}: {e}")
     
-    def 세로누름틀생성(hwp, 시작인덱스 , 필드이름, 개수):
-        for i in range(개수):
-            field_name = f"{필드이름}_{시작인덱스 + i}"
-            hwp.CreateField(필드이름, "", field_name)
-            hwp.HAction.Execute("MoveDown", hwp.HParameterSet.HFindReplace.HSet)
-    
-    def 가로누름틀생성(hwp, 시작인덱스 , 필드이름, 개수):
-        for i in range(개수):
-            field_name = f"{필드이름}_{시작인덱스 + i}"
-            hwp.CreateField(필드이름, "", field_name)
-            hwp.HAction.Execute("MoveRight", hwp.HParameterSet.HFindReplace.HSet)
+    def 세로누름틀생성(self, 시작인덱스, 필드이름, 개수):
+        """
+        세로로 텍스트를 삽입하여 필드처럼 보이게 처리.
+        """
+        try:
+            for i in range(개수):
+                field_name = f"{필드이름}_{시작인덱스 + i}"
+                self.hwp.HAction.GetDefault("InsertText", self.hwp.HParameterSet.HInsertText)
+                self.hwp.HParameterSet.HInsertText.Text = f"[{field_name}]"
+                self.hwp.HAction.Execute("InsertText", self.hwp.HParameterSet.HInsertText)
+                self.hwp.HAction.Run("MoveDown")  # 커서를 아래로 이동
+        except Exception as e:
+            print(f"Error creating vertical text fields: {e}")
 
     def 닫기(self):
         self.hwp.Clear(1)
 
     def 종료(self):
         self.hwp.Quit()
-    
-    def 초기화(self,excel,select_row_index):
-        
-        for index, row in excel.iterrows():
-            # A, B열 데이터 삽입
-            self.hwp.PutFieldText(select_row_index,"")  # A열: 필드명, B열: 값
-             
