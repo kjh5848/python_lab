@@ -24,11 +24,12 @@ class HwpUtill:
         except Exception as e:
             print(f"Error saving file {new_file_name}: {e}")
     
-    def 세로누름틀생성(hwp, 시작인덱스 , 필드이름, 개수):
+    def 세로누름틀생성(self, 시작인덱스 , 필드이름, 개수):
         for i in range(개수):
             field_name = f"{필드이름}_{시작인덱스 + i}"
-            hwp.CreateField(필드이름, "", field_name)
-            hwp.HAction.Execute("MoveDown", hwp.HParameterSet.HFindReplace.HSet)
+            self.hwp.CreateField(필드이름, "", field_name)
+            self.hwp.HAction.Execute("MoveDown", self.hwp.HParameterSet.HFindReplace.HSet)
+
 
     def 닫기(self):
         self.hwp.Clear(1)
