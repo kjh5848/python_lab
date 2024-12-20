@@ -24,20 +24,11 @@ class HwpUtill:
         except Exception as e:
             print(f"Error saving file {new_file_name}: {e}")
     
-    
-    def 세로누름틀생성(self, 시작인덱스, 필드이름, 개수):
-        """
-        세로로 텍스트를 삽입하여 필드처럼 보이게 처리.
-        """
-        try:
-            for i in range(개수):
-                field_name = f"{필드이름}_{시작인덱스 + i}"
-                self.hwp.HAction.GetDefault("InsertText", self.hwp.HParameterSet.HInsertText)
-                self.hwp.HParameterSet.HInsertText.Text = f"[{field_name}]"
-                self.hwp.HAction.Execute("InsertText", self.hwp.HParameterSet.HInsertText)
-                self.hwp.HAction.Run("MoveDown")  # 커서를 아래로 이동
-        except Exception as e:
-            print(f"Error creating vertical text fields: {e}")
+    def 세로누름틀생성(self, 시작인덱스 , 필드이름, 개수):
+        for i in range(개수):
+            field_name = f"{필드이름}_{시작인덱스 + i}"
+            self.hwp.CreateField(필드이름, "", field_name)
+            self.hwp.HAction.Execute("MoveDown", self.hwp.HParameterSet.HFindReplace.HSet)
 
 
     def 닫기(self):
