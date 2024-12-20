@@ -39,7 +39,8 @@ class DocumentAutomationApp:
         self.form_button.pack(pady=5)
         
         # 드롭다운 메뉴로 서식 선택
-        self.form_types = ["[서식33] 인턴형 일경험 참여신청서", "[서식46] 인턴형 참여청년 확인서"]
+        self.form_types = ["[서식33] 인턴형 일경험 참여신청서",
+                            "[서식46] 인턴형 참여청년 확인서"]
         self.form_selection = ttk.Combobox(root, values=self.form_types)
         self.form_selection.set("서식을 선택하세요")
         self.form_selection.pack(pady=10)
