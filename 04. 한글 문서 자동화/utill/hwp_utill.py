@@ -30,13 +30,13 @@ class HwpUtill:
             self.hwp.CreateField(필드이름, "", field_name)
             self.hwp.HAction.Execute("MoveDown", self.hwp.HParameterSet.HFindReplace.HSet)
 
-    def 가로누름틀생성한줄(self, 시작인덱스, 필드이름, 개수):
+    def 가로누름틀생성한줄(self, 시작인덱스, 안내문, 필드이름, 개수):
         for i in range(개수):
             # 필드 이름 생성
             field_name = f"{필드이름}_{시작인덱스 + i}"
             
             # 누름틀 필드 생성 (현재 커서 위치에 삽입)
-            self.hwp.CreateField(필드이름, "", field_name)
+            self.hwp.CreateField(안내문, "", field_name)
             print(f"Inserted field: {field_name}")
             
             # 누름틀 생성 후 커서를 누름틀 바깥으로 이동
