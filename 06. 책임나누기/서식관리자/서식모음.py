@@ -1,5 +1,5 @@
-from 서식33 import 서식33인턴신청서
-from 서식46 import 서식46인턴확인서
+from 서식관리자.서식33 import 서식33인턴신청서
+from 서식관리자.서식46 import 서식46인턴확인서
 from enum import Enum
 
 # Enum을 사용하여 서식 이름과 매핑되는 키를 정의합니다.

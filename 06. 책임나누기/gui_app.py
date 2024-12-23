@@ -2,14 +2,14 @@ import tkinter as tk
 from tkinter import ttk, filedialog
 from excel_service import ExcelService
 from hwp_service import HwpService
-from 서식모음 import 서식이름
+from 서식관리자.서식모음 import 서식이름, 서식모음
 import os
 
 class DocumentAutomationApp:
-    def __init__(self, root, excel_service, hwp_service,서식모음_인스턴스):
-        self.excel_service = excel_service
-        self.hwp_service = hwp_service
-        self.서식들 = 서식모음_인스턴스
+    def __init__(self, root):
+        self.excel_service = ExcelService()
+        self.hwp_service = HwpService()
+        self.서식들 = 서식모음()
 
         self.root = root
         self.root.title("한글 서식 자동화 도구")
@@ -39,7 +39,10 @@ class DocumentAutomationApp:
         self.form_button.pack(pady=5)
         
         # 드롭다운 메뉴로 서식 선택
-        self.form_types = ["[서식33] 인턴형 일경험 참여신청서", "[서식46] 인턴형 참여청년 확인서"]
+        self.form_types = [
+            "[서식33] 인턴형 일경험 참여신청서",
+            "[서식46] 인턴형 참여청년 확인서",
+            ]
         self.form_selection = ttk.Combobox(root, values=self.form_types)
         self.form_selection.set("서식을 선택하세요")
         self.form_selection.pack(pady=10)
