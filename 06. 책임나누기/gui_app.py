@@ -1,14 +1,12 @@
 import tkinter as tk
 from tkinter import ttk, filedialog
 from excel_service import ExcelService
-from hwp_service import HwpService
 from 서식관리자.서식모음 import 서식이름, 서식모음
 import os
 
 class DocumentAutomationApp:
     def __init__(self, root):
         self.excel_service = ExcelService()
-        self.hwp_service = HwpService()
         self.서식들 = 서식모음()
 
         self.root = root
@@ -18,7 +16,7 @@ class DocumentAutomationApp:
         # 엑셀 파일 경로 변수와 라벨
         self.excel_file_path = tk.StringVar()
         self.excel_label = tk.Label(root, text="엑셀 파일 경로:")
-        self.excel_label.pack(pady=5)
+        self.excel_label.pack(pady=10)
         self.excel_entry = tk.Entry(root, textvariable=self.excel_file_path, width=50)
         self.excel_entry.pack(pady=5)
         
