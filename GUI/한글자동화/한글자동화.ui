@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1104</width>
+    <width>756</width>
     <height>743</height>
    </rect>
   </property>
@@ -27,14 +27,14 @@
      <item>
       <layout class="QFormLayout" name="formLayout">
        <item row="1" column="0">
-        <widget class="QLabel" name="label_4">
+        <widget class="QLabel" name="program_label">
          <property name="text">
           <string>프로그램 단계</string>
          </property>
         </widget>
        </item>
        <item row="2" column="0">
-        <widget class="QComboBox" name="cmb_Test_4">
+        <widget class="QComboBox" name="program_cmb1">
          <item>
           <property name="text">
            <string>프로그램 등록</string>
@@ -58,7 +58,7 @@
         </widget>
        </item>
        <item row="2" column="1">
-        <widget class="QComboBox" name="cmb_Test_5">
+        <widget class="QComboBox" name="program_cmb2">
          <item>
           <property name="text">
            <string>1st Item</string>
@@ -74,6 +74,13 @@
            <string>3rd Item</string>
           </property>
          </item>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLabel" name="label_7">
+         <property name="text">
+          <string/>
+         </property>
         </widget>
        </item>
       </layout>
@@ -180,75 +187,13 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="layoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>270</y>
-      <width>185</width>
-      <height>52</height>
-     </rect>
-    </property>
-    <layout class="QFormLayout" name="formLayout_2">
-     <item row="1" column="0">
-      <widget class="QLabel" name="label_5">
-       <property name="text">
-        <string>프로그램 단계</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
-      <widget class="QComboBox" name="cmb_Test_6">
-       <item>
-        <property name="text">
-         <string>프로그램 등록</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>사전직무운영</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>일경험 운영</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>일경험 종료</string>
-        </property>
-       </item>
-      </widget>
-     </item>
-     <item row="2" column="1">
-      <widget class="QComboBox" name="cmb_Test_7">
-       <item>
-        <property name="text">
-         <string>1st Item</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>2nd Item</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>3rd Item</string>
-        </property>
-       </item>
-      </widget>
-     </item>
-    </layout>
-   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1104</width>
+     <width>756</width>
      <height>22</height>
     </rect>
    </property>

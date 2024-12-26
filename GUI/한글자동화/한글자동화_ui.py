@@ -24,7 +24,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1104, 743)
+        MainWindow.resize(756, 743)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayoutWidget = QWidget(self.centralwidget)
@@ -35,27 +35,32 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
         self.formLayout = QFormLayout()
         self.formLayout.setObjectName(u"formLayout")
-        self.label_4 = QLabel(self.verticalLayoutWidget)
-        self.label_4.setObjectName(u"label_4")
+        self.program_label = QLabel(self.verticalLayoutWidget)
+        self.program_label.setObjectName(u"program_label")
 
-        self.formLayout.setWidget(1, QFormLayout.LabelRole, self.label_4)
+        self.formLayout.setWidget(1, QFormLayout.LabelRole, self.program_label)
 
-        self.cmb_Test_4 = QComboBox(self.verticalLayoutWidget)
-        self.cmb_Test_4.addItem("")
-        self.cmb_Test_4.addItem("")
-        self.cmb_Test_4.addItem("")
-        self.cmb_Test_4.addItem("")
-        self.cmb_Test_4.setObjectName(u"cmb_Test_4")
+        self.program_cmb1 = QComboBox(self.verticalLayoutWidget)
+        self.program_cmb1.addItem("")
+        self.program_cmb1.addItem("")
+        self.program_cmb1.addItem("")
+        self.program_cmb1.addItem("")
+        self.program_cmb1.setObjectName(u"program_cmb1")
 
-        self.formLayout.setWidget(2, QFormLayout.LabelRole, self.cmb_Test_4)
+        self.formLayout.setWidget(2, QFormLayout.LabelRole, self.program_cmb1)
 
-        self.cmb_Test_5 = QComboBox(self.verticalLayoutWidget)
-        self.cmb_Test_5.addItem("")
-        self.cmb_Test_5.addItem("")
-        self.cmb_Test_5.addItem("")
-        self.cmb_Test_5.setObjectName(u"cmb_Test_5")
+        self.program_cmb2 = QComboBox(self.verticalLayoutWidget)
+        self.program_cmb2.addItem("")
+        self.program_cmb2.addItem("")
+        self.program_cmb2.addItem("")
+        self.program_cmb2.setObjectName(u"program_cmb2")
 
-        self.formLayout.setWidget(2, QFormLayout.FieldRole, self.cmb_Test_5)
+        self.formLayout.setWidget(2, QFormLayout.FieldRole, self.program_cmb2)
+
+        self.label_7 = QLabel(self.verticalLayoutWidget)
+        self.label_7.setObjectName(u"label_7")
+
+        self.formLayout.setWidget(1, QFormLayout.FieldRole, self.label_7)
 
 
         self.verticalLayout_3.addLayout(self.formLayout)
@@ -121,7 +126,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 1104, 22))
+        self.menubar.setGeometry(QRect(0, 0, 756, 22))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
@@ -134,16 +139,17 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.label_4.setText(QCoreApplication.translate("MainWindow", u"\ud504\ub85c\uadf8\ub7a8 \ub2e8\uacc4", None))
-        self.cmb_Test_4.setItemText(0, QCoreApplication.translate("MainWindow", u"\ud504\ub85c\uadf8\ub7a8 \ub4f1\ub85d", None))
-        self.cmb_Test_4.setItemText(1, QCoreApplication.translate("MainWindow", u"\uc0ac\uc804\uc9c1\ubb34\uc6b4\uc601", None))
-        self.cmb_Test_4.setItemText(2, QCoreApplication.translate("MainWindow", u"\uc77c\uacbd\ud5d8 \uc6b4\uc601", None))
-        self.cmb_Test_4.setItemText(3, QCoreApplication.translate("MainWindow", u"\uc77c\uacbd\ud5d8 \uc885\ub8cc", None))
+        self.program_label.setText(QCoreApplication.translate("MainWindow", u"\ud504\ub85c\uadf8\ub7a8 \ub2e8\uacc4", None))
+        self.program_cmb1.setItemText(0, QCoreApplication.translate("MainWindow", u"\ud504\ub85c\uadf8\ub7a8 \ub4f1\ub85d", None))
+        self.program_cmb1.setItemText(1, QCoreApplication.translate("MainWindow", u"\uc0ac\uc804\uc9c1\ubb34\uc6b4\uc601", None))
+        self.program_cmb1.setItemText(2, QCoreApplication.translate("MainWindow", u"\uc77c\uacbd\ud5d8 \uc6b4\uc601", None))
+        self.program_cmb1.setItemText(3, QCoreApplication.translate("MainWindow", u"\uc77c\uacbd\ud5d8 \uc885\ub8cc", None))
 
-        self.cmb_Test_5.setItemText(0, QCoreApplication.translate("MainWindow", u"1st Item", None))
-        self.cmb_Test_5.setItemText(1, QCoreApplication.translate("MainWindow", u"2nd Item", None))
-        self.cmb_Test_5.setItemText(2, QCoreApplication.translate("MainWindow", u"3rd Item", None))
+        self.program_cmb2.setItemText(0, QCoreApplication.translate("MainWindow", u"1st Item", None))
+        self.program_cmb2.setItemText(1, QCoreApplication.translate("MainWindow", u"2nd Item", None))
+        self.program_cmb2.setItemText(2, QCoreApplication.translate("MainWindow", u"3rd Item", None))
 
+        self.label_7.setText("")
         self.label_6.setText("")
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"\uc5d1\uc140\uacbd\ub85c", None))
         self.pushButton_5.setText(QCoreApplication.translate("MainWindow", u"\ucd94\uac00", None))

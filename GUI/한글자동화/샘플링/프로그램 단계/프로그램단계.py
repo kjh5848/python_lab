@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import QComboBox
-from Enum.program_step_enum import ProgramStep
+from program_step_enum import ProgramStep
 
 class ComboComponent:
     def __init__(self, cmb_program_step: QComboBox, cmb_unit: QComboBox):
