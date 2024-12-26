@@ -1,4 +1,5 @@
-from imports import *
+from qt_imports import *
+from Enum.enum_init import *
 
 class ComboComponent:
     def __init__(self, cmb_program_step: QComboBox, cmb_unit: QComboBox):

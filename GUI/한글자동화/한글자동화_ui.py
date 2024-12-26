@@ -77,18 +77,18 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_5 = QHBoxLayout()
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
-        self.textEdit_5 = QTextEdit(self.verticalLayoutWidget)
-        self.textEdit_5.setObjectName(u"textEdit_5")
-        self.textEdit_5.setMaximumSize(QSize(526, 29))
+        self.excel_path_line_edit = QTextEdit(self.verticalLayoutWidget)
+        self.excel_path_line_edit.setObjectName(u"excel_path_line_edit")
+        self.excel_path_line_edit.setMaximumSize(QSize(526, 29))
 
-        self.horizontalLayout_5.addWidget(self.textEdit_5)
+        self.horizontalLayout_5.addWidget(self.excel_path_line_edit)
 
-        self.pushButton_5 = QPushButton(self.verticalLayoutWidget)
-        self.pushButton_5.setObjectName(u"pushButton_5")
-        self.pushButton_5.setMaximumSize(QSize(75, 24))
-        self.pushButton_5.setStyleSheet(u"background-color: rgb(153, 153, 153);")
+        self.excel_add_button = QPushButton(self.verticalLayoutWidget)
+        self.excel_add_button.setObjectName(u"excel_add_button")
+        self.excel_add_button.setMaximumSize(QSize(75, 24))
+        self.excel_add_button.setStyleSheet(u"background-color: rgb(153, 153, 153);")
 
-        self.horizontalLayout_5.addWidget(self.pushButton_5)
+        self.horizontalLayout_5.addWidget(self.excel_add_button)
 
 
         self.verticalLayout_3.addLayout(self.horizontalLayout_5)
@@ -105,20 +105,20 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_4 = QHBoxLayout()
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
-        self.textEdit_4 = QTextEdit(self.verticalLayoutWidget)
-        self.textEdit_4.setObjectName(u"textEdit_4")
-        self.textEdit_4.setMinimumSize(QSize(526, 29))
-        self.textEdit_4.setMaximumSize(QSize(526, 29))
+        self.hwp_path_line_edit = QTextEdit(self.verticalLayoutWidget)
+        self.hwp_path_line_edit.setObjectName(u"hwp_path_line_edit")
+        self.hwp_path_line_edit.setMinimumSize(QSize(526, 29))
+        self.hwp_path_line_edit.setMaximumSize(QSize(526, 29))
 
-        self.horizontalLayout_4.addWidget(self.textEdit_4)
+        self.horizontalLayout_4.addWidget(self.hwp_path_line_edit)
 
-        self.pushButton_4 = QPushButton(self.verticalLayoutWidget)
-        self.pushButton_4.setObjectName(u"pushButton_4")
-        self.pushButton_4.setMinimumSize(QSize(75, 0))
-        self.pushButton_4.setMaximumSize(QSize(75, 24))
-        self.pushButton_4.setStyleSheet(u"background-color: rgb(153, 153, 153);")
+        self.hwp_add_button = QPushButton(self.verticalLayoutWidget)
+        self.hwp_add_button.setObjectName(u"hwp_add_button")
+        self.hwp_add_button.setMinimumSize(QSize(75, 0))
+        self.hwp_add_button.setMaximumSize(QSize(75, 24))
+        self.hwp_add_button.setStyleSheet(u"background-color: rgb(153, 153, 153);")
 
-        self.horizontalLayout_4.addWidget(self.pushButton_4)
+        self.horizontalLayout_4.addWidget(self.hwp_add_button)
 
 
         self.verticalLayout_3.addLayout(self.horizontalLayout_4)
@@ -152,9 +152,9 @@ class Ui_MainWindow(object):
         self.label_7.setText("")
         self.label_6.setText("")
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"\uc5d1\uc140\uacbd\ub85c", None))
-        self.pushButton_5.setText(QCoreApplication.translate("MainWindow", u"\ucd94\uac00", None))
+        self.excel_add_button.setText(QCoreApplication.translate("MainWindow", u"\ucd94\uac00", None))
         self.label.setText("")
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"\ud55c\uae00\uacbd\ub85c", None))
-        self.pushButton_4.setText(QCoreApplication.translate("MainWindow", u"\ucd94\uac00", None))
+        self.hwp_add_button.setText(QCoreApplication.translate("MainWindow", u"\ucd94\uac00", None))
     # retranslateUi
 

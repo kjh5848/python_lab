@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import QComboBox
-from program_step_enum import ProgramStep
+from program_step_enum import ProgramStep, UNIT_OPTIONS
 
 class ComboComponent:
     def __init__(self, cmb_program_step: QComboBox, cmb_unit: QComboBox):
@@ -12,6 +12,7 @@ class ComboComponent:
 
     def init_program_step(self):
         """초기화 시 프로그램 단계 콤보박스에 항목 추가"""
+        
         self.cmb_program_step.clear()
         self.cmb_program_step.addItems([step.value  for step in ProgramStep])
         self.cmb_unit.clear()
