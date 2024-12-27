@@ -17,10 +17,10 @@
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>30</y>
+      <x>60</x>
+      <y>60</y>
       <width>611</width>
-      <height>216</height>
+      <height>391</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -87,6 +87,58 @@
      </item>
      <item>
       <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="program_label_2">
+       <property name="minimumSize">
+        <size>
+         <width>61</width>
+         <height>22</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>80</width>
+         <height>22</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>엑셀시트</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QGridLayout" name="gridLayout">
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <item row="1" column="0">
+        <widget class="QComboBox" name="program_cmb2_2">
+         <item>
+          <property name="text">
+           <string>1st Item</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2nd Item</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3rd Item</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_8">
        <property name="text">
         <string/>
        </property>
