@@ -90,14 +90,16 @@ class HwpUtill:
             self.채우기('광고 마케팅', '■')
 
 
+
     def 파일열기(self, file_name, file_path):
         file_path = fr'{file_path}\{file_name}.hwp'
         return self.hwp.Open(file_path)
 
+    
     def 한칸아래로(self):
         """현재 커서를 한 칸 아래로 이동"""
         try:
-            self.hwp.HAction.Run("MoveDown")  # 한글의 '아래로 한 칸 이동' 액션 실행
+            self.hwp.HAction.Execute("MoveDown", self.hwp.HParameterSet.HFindReplace.HSet)  # 한글의 '아래로 한 칸 이동' 액션 실행
         except Exception as e:
             print(f"한 칸 아래로 이동 중 오류 발생: {e}")
     
