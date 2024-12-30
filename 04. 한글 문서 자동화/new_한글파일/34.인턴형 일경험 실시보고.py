@@ -53,7 +53,7 @@ def fill_fields(hwp_object, data, field_mapping):
 
 # 파일 경로 및 시트 설정
 EXCEL_FILE_PATH = r"C:\Users\사용자\Desktop\미래내일일경험\python_lab\07. 한글 문서\[광고마케팅] 241223 KTCA_30명.xlsx"
-HWP_FILE_NAME = "[서식125] (공통직무교육기관) 사전직무교육 실시보고"
+HWP_FILE_NAME = '[서식34] 인턴형 일경험 실시보고'
 HWP_FILE_PATH = r"C:\Users\사용자\Desktop\미래내일일경험\python_lab\07. 한글 문서\★누름틀_문서\3. 사전직무 서류"
 SAVE_FILE_PATH = r"C:\Users\사용자\Desktop\미래내일일경험\사전직무"
 

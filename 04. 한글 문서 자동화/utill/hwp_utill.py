@@ -63,6 +63,24 @@ class HwpUtill:
                 value = self._포맷팅(row_data[field_name])
                 self.채우기(field_name, value)
 
+    def 홀짝필드채우기(self,excel_sheet,field_names):
+        for row_index, row_data in excel_sheet.iterrows():
+            try:
+                # 열 순회: 모든 열에서 필드명, 값 쌍으로 처리
+                for col_index in range(1, len(row_data), 2):  # 2칸씩 건너뛰기 (필드명, 값 쌍)
+                    field_name = row_data[col_index]  # 현재 열 (필드명)
+                    if col_index + 1 < len(row_data):  # 값 열이 존재하는지 확인
+                        field_value = row_data[col_index + 1]
+                    else:
+                        continue  # 값 열이 없으면 스킵
+
+                    # 필드 이름이 한글 필드 목록에 있는 경우만 처리
+                    if field_name in field_names:
+                        self.채우기(field_name, str(field_value))
+
+            except Exception as e:
+                print(f"오류 발생 (사전직무정보 행: {row_index + 1}, 열: {col_index}): {e}")
+
     def 채우기(self, field_name, value):
         """필드에 값 입력"""
         try:
@@ -76,11 +94,13 @@ class HwpUtill:
         if pd.isna(cell_data):
             return ""
         elif isinstance(cell_data, (int, float)):
+            if "%" in str(cell_data):  # 만약 퍼센트 기호가 포함된 데이터라면
+                return str(int(float(cell_data.strip("%")))) + "%"
             return f"{int(cell_data)}" if cell_data % 1 == 0 else f"{cell_data:.2f}"
         return str(cell_data)
 
 
-     # 희망 직무 입력
+    # 희망 직무 입력
     def 희망직무(self, row):
         """희망 직무에 따라 필드 채우기"""
         직무 = row.get('직무', "")
