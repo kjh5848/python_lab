@@ -15,8 +15,8 @@ def 프로그램목록(HObject,field_names,excel_sheet):
     운영기관명필드목록 = [field for field in field_names if field.startswith("운영기관명")][:필요한필드수]
 
 
-    # 그룹화된 데이터를 리스트로 변환
-    grouped_keys = list(grouped.groups.keys())
+    # # 그룹화된 데이터를 리스트로 변환
+    # grouped_keys = list(grouped.groups.keys())
 
 
     # 프로그램별 정보를 필드에 채우기
@@ -37,25 +37,13 @@ def 프로그램목록(HObject,field_names,excel_sheet):
         HObject.채우기(운영기관명필드, institution_name) # 운영기관명 삽입
         HObject.채우기(인원필드, str(count))            # 참여인원 삽입
     
-    
-
-def fill_fields(hwp_object, data, field_mapping):
-    """시작하는 필드 이름을 동적으로 매핑하여 데이터를 채우기."""
-    for index, row in data.iterrows():
-        try:
-            for excel_col, hwp_fields in field_mapping.items():
-                if index < len(hwp_fields):
-                    hwp_field_name = hwp_fields[index]
-                    hwp_object.채우기(hwp_field_name, row[excel_col])
-        except Exception as e:
-            print(f"오류 발생 (행: {index + 1}, 필드: {excel_col}): {e}")
 
 
 # 파일 경로 및 시트 설정
-EXCEL_FILE_PATH = r"C:\Users\사용자\Desktop\미래내일일경험\python_lab\07. 한글 문서\[광고마케팅] 241223 KTCA_30명.xlsx"
+EXCEL_FILE_PATH = r"C:\Users\Administrator\Desktop\미래내일일경험 공유\python_lab\07. 한글 문서\[광고마케팅] 241223 KTCA_30명.xlsx"
 HWP_FILE_NAME = "[서식125] (공통직무교육기관) 사전직무교육 실시보고"
-HWP_FILE_PATH = r"C:\Users\사용자\Desktop\미래내일일경험\python_lab\07. 한글 문서\★누름틀_문서\3. 사전직무 서류"
-SAVE_FILE_PATH = r"C:\Users\사용자\Desktop\미래내일일경험\사전직무"
+HWP_FILE_PATH = r"C:\Users\Administrator\Desktop\미래내일일경험 공유\python_lab\07. 한글 문서\★누름틀_문서\3. 사전직무 서류"
+SAVE_FILE_PATH = r"C:\Users\Administrator\Desktop\미래내일일경험 공유\사전직무"
 
 # 객체 생성
 EObject = excel_utill.ExcelUtill()
@@ -94,8 +82,7 @@ field_mapping_group = {
         "프로그램명": [f for f in field_names if f.startswith("프로그램명_")]
 }
 
-fill_fields(
-    hwp_object=HObject,
+HObject.fill_fields(
     data=참여자명단,
     field_mapping=field_mapping_group
 )

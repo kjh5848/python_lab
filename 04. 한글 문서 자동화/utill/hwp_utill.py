@@ -62,6 +62,7 @@ class HwpUtill:
             if field_name in row_data.index:
                 value = self._포맷팅(row_data[field_name])
                 self.채우기(field_name, value)
+                
 
     def 홀짝필드채우기(self,excel_sheet,field_names):
         for row_index, row_data in excel_sheet.iterrows():
