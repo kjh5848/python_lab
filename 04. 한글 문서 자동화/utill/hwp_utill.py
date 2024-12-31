@@ -63,7 +63,25 @@ class HwpUtill:
                 value = self._포맷팅(row_data[field_name])
                 self.채우기(field_name, value)
                 
+    def fill_fields(self, data, field_mapping):
+        """시작하는 필드 이름을 동적으로 매핑하여 데이터를 채우기."""
+        max_fields = max(len(fields) for fields in field_mapping.values())  # 최대 필드 수 계산
 
+        for index, row in data.iterrows():
+            try:
+                for excel_col, hwp_fields in field_mapping.items():
+                    if index < len(hwp_fields):
+                        hwp_field_name = hwp_fields[index]
+                        self.채우기(hwp_field_name, row[excel_col])
+
+                # 남은 필드를 빈 값으로 초기화
+                for excel_col, hwp_fields in field_mapping.items():
+                    for idx in range(index + 1, max_fields):
+                        if idx < len(hwp_fields):
+                            self.채우기(hwp_fields[idx], "")  # 빈 값 채우기
+            except Exception as e:
+                print(f"오류 발생 (행: {index + 1}, 필드: {excel_col}): {e}")
+                
     def 홀짝필드채우기(self,excel_sheet,field_names):
         for row_index, row_data in excel_sheet.iterrows():
             try:
