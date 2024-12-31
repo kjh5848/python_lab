@@ -76,10 +76,21 @@ class HwpUtill:
 
                     # 필드 이름이 한글 필드 목록에 있는 경우만 처리
                     if field_name in field_names:
-                        self.채우기(field_name, str(field_value))
+                        self.채우기(field_name, self._포맷팅(field_value))
 
             except Exception as e:
                 print(f"오류 발생 (사전직무정보 행: {row_index + 1}, 열: {col_index}): {e}")
+
+    def fill_fields(self, data, field_mapping):
+        """시작하는 필드 이름을 동적으로 매핑하여 데이터를 채우기."""
+        for index, row in data.iterrows():
+            try:
+                for excel_col, hwp_fields in field_mapping.items():
+                    if index < len(hwp_fields):
+                        hwp_field_name = hwp_fields[index]
+                        self.채우기(hwp_field_name, row[excel_col])
+            except Exception as e:
+                print(f"오류 발생 (행: {index + 1}, 필드: {excel_col}): {e}")
 
     def 채우기(self, field_name, value):
         """필드에 값 입력"""

@@ -7,7 +7,7 @@ class HwpUtill:
         self.hwp = win32.gencache.EnsureDispatch("hwpframe.hwpobject")
         self.hwp.RegisterModule("FilePathCheckDLL", "FilePathCheckerModuleExample")
         self.hwp.XHwpWindows.Item(0).Visible = True  # 한글 창을 보이게 설정
-    
+
 
     def 학력정보입력(self, row):
         학력구분 = row.get('최종학력구분', "")
