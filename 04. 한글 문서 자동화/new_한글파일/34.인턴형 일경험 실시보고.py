@@ -38,7 +38,7 @@ field_mapping_group = {
         "프로그램명": [f for f in field_names if f.startswith("프로그램명_")]
 }
 
-fill_fields(
+HObject.fill_fields(
     hwp_object=HObject,
     data=참여자명단,
     field_mapping=field_mapping_group
