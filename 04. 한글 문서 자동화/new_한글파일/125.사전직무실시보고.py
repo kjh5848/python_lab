@@ -73,7 +73,6 @@ HObject.홀짝필드채우기(사전직무정보,field_names)
     excel_sheet=참여자명단
 )
 
-
 field_mapping_group = {
         "성명": [f for f in field_names if f.startswith("성명_")],
         "생년월일": [f for f in field_names if f.startswith("생년월일_")],
@@ -86,8 +85,6 @@ HObject.fill_fields(
     data=참여자명단,
     field_mapping=field_mapping_group
 )
-
-
 
 # 결과 저장 및 닫기
 HObject.저장(f"{HWP_FILE_NAME}_결과.hwp", SAVE_FILE_PATH)
