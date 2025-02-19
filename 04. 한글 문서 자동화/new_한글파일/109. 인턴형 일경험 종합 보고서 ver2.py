@@ -4,10 +4,11 @@ from openai import OpenAI
 from utill import excel_utill, hwp_utill
 
 # 파일 경로 및 시트 설정
-EXCEL_FILE_PATH = r"C:\Users\Administrator\Desktop\미래내일일경험 공유\python_lab\07. 한글 문서\[쇼우테크] SNS콘텐츠 마케팅 인턴십.xlsx"
+EXCEL_FILE_PATH = r"C:\Users\Administrator\Desktop\미래내일일경험 공유\python_lab\07. 한글 문서\new_한글 자동화_KTCA_참여신청서.xlsx"
 HWP_FILE_NAME = "[서식 109] 인턴형 일경험 종합 보고서 KTCA"
 HWP_FILE_PATH = r"C:\Users\Administrator\Desktop\미래내일일경험 공유\python_lab\07. 한글 문서\★누름틀_문서\5. 일경험 서류"
 SAVE_FILE_PATH = r"C:\Users\Administrator\Desktop\미래내일일경험 공유\KTCA종합보고서"
+IMAGE_DIR = r"C:\Users\Administrator\Desktop\서명\20250212"  # 이미지 폴더 경로
 
 # 객체 생성
 EObject = excel_utill.ExcelUtill()
@@ -57,7 +58,6 @@ def 한글문서생성(HObject, excel_data, hwp_file_name, hwp_file_path, save_f
     hwp_file_path=HWP_FILE_PATH,
     save_file_path=SAVE_FILE_PATH
 )
-            
 
 
 # # %%

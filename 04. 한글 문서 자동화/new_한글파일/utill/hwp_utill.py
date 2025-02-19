@@ -56,6 +56,56 @@ class HwpUtill:
         return [field.split('\x00')[0] for field in field_list]
 
 
+    def insert_signature_image(self, image_path, target_field_name, width=19, height=19, x_pos=0, y_pos=0):
+        """지정된 필드에 서명 이미지 삽입 및 크기/위치 설정"""
+        try:
+            # 서명 필드로 이동
+            self.hwp.MoveToField(target_field_name)
+
+            # 이미지 삽입
+            self.hwp.InsertPicture(image_path, Embedded=True, sizeoption=0)
+            
+            # 개체 선택
+            self.hwp.FindCtrl()  
+            
+            # 설정 변경
+            self.hwp.HAction.GetDefault("ShapeObjDialog", self.hwp.HParameterSet.HShapeObject.HSet)
+            self.hwp.HParameterSet.HShapeObject.HSet.SetItem("TreatAsChar", 0)  # 글자처럼 취급 해제
+            self.hwp.HParameterSet.HShapeObject.HSet.SetItem("TextWrap", 3)  # 글 앞에 배치
+            self.hwp.HParameterSet.HShapeObject.HSet.SetItem("Width", int(width * 250.465))   # 너비 설정
+            self.hwp.HParameterSet.HShapeObject.HSet.SetItem("Height", int(height * 80.465))  # 높이 설정
+            # self.hwp.HParameterSet.HShapeObject.HSet.SetItem("HorzRelTo", 0)  # 종이 기준 위치 설정
+            # self.hwp.HParameterSet.HShapeObject.HSet.SetItem("VertRelTo", 0)
+            # self.hwp.HParameterSet.HShapeObject.HSet.SetItem("HorzOffset", self.hwp.MiliToHwpUnit(x_pos))
+            # self.hwp.HParameterSet.HShapeObject.HSet.SetItem("VertOffset", self.hwp.MiliToHwpUnit(y_pos))
+            self.hwp.HParameterSet.HShapeObject.HSet.SetItem("HorzOffset", self.hwp.MiliToHwpUnit(6.5))
+            
+            # 설정 적용
+            self.hwp.HAction.Execute("ShapeObjDialog", self.hwp.HParameterSet.HShapeObject.HSet)
+
+            print(f"서명 이미지 삽입 완료: '{target_field_name}' 필드")
+        except Exception as e:
+            print(f"이미지 삽입 오류 ({target_field_name}): {e}")
+
+    def 필드에_이미지_삽입(self, field_names, image_dir, name):
+            """필드명이 {서명}이고, 성명과 같은 이미지 파일이 있으면 삽입"""
+            valid_extensions = [".jpg", ".png", ".jpeg"]
+            signature_fields = ["서명", "서명1", "서명2"]
+
+            for field_name in signature_fields:
+                if field_name in field_names:
+                    image_path = None
+                    for ext in valid_extensions:
+                        temp_path = os.path.join(image_dir, f"{name}{ext}")
+                        if os.path.exists(temp_path):
+                            image_path = temp_path
+                            break
+                    if image_path:
+                        self.insert_signature_image(image_path, field_name)
+                else:
+                    print(f"이미지 없음: {name}")  # 동일한 필드는 한 번만 삽입  # 동일한 필드는 한 번만 삽입
+                
+
     def 필드채우기(self, field_names, row_data):
         """HWP 필드에 데이터 채우기"""
         for field_name in field_names:

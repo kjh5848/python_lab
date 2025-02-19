@@ -56,32 +56,63 @@ class HwpUtill:
         return [field.split('\x00')[0] for field in field_list]
 
 
+    def insert_signature_image(self, image_path, target_field_name, width=19, height=19, x_pos=0, y_pos=0):
+        """지정된 필드에 서명 이미지 삽입 및 크기/위치 설정"""
+        try:
+            # 서명 필드로 이동
+            self.hwp.MoveToField(target_field_name)
+
+            # 이미지 삽입
+            self.hwp.InsertPicture(image_path, Embedded=True, sizeoption=0)
+            
+            # 개체 선택
+            self.hwp.FindCtrl()  
+            
+            # 설정 변경
+            self.hwp.HAction.GetDefault("ShapeObjDialog", self.hwp.HParameterSet.HShapeObject.HSet)
+            # self.hwp.HParameterSet.HShapeObject.HSet.SetItem("Height", int(height * 283.465))  # 높이 설정
+            # self.hwp.HParameterSet.HShapeObject.HSet.SetItem("Width", int(width * 283.465))   # 너비 설정
+            self.hwp.HParameterSet.HShapeObject.HSet.SetItem("TreatAsChar", 0)  # 글자처럼 취급 해제
+            self.hwp.HParameterSet.HShapeObject.HSet.SetItem("TextWrap", 3)  # 글 앞에 배치
+            self.hwp.HParameterSet.HShapeObject.HSet.SetItem("HorzRelTo", 0)  # 종이 기준 위치 설정
+            self.hwp.HParameterSet.HShapeObject.HSet.SetItem("VertRelTo", 0)
+            # self.hwp.HParameterSet.HShapeObject.HSet.SetItem("HorzOffset", self.hwp.MiliToHwpUnit(x_pos))
+            # self.hwp.HParameterSet.HShapeObject.HSet.SetItem("VertOffset", self.hwp.MiliToHwpUnit(y_pos))
+            
+            # 설정 적용
+            self.hwp.HAction.Execute("ShapeObjDialog", self.hwp.HParameterSet.HShapeObject.HSet)
+
+            print(f"서명 이미지 삽입 완료: '{target_field_name}' 필드")
+        except Exception as e:
+            print(f"이미지 삽입 오류 ({target_field_name}): {e}")
+
+    def 필드에_이미지_삽입(self, field_names, image_dir, name ):
+        """필드명이 {서명}이고, 성명과 같은 이미지 파일이 있으면 삽입"""
+
+        valid_extensions = [".jpg", ".png", ".jpeg"]
+
+        # {서명} 필드가 있는지 확인
+        if "서명" in field_names:
+            image_path = None
+            for ext in valid_extensions:
+                temp_path = os.path.join(image_dir, f"{name}{ext}")
+                if os.path.exists(temp_path):
+                    image_path = temp_path
+                    break  # 존재하는 파일을 찾으면 반복 종료
+
+            if image_path:
+                self.insert_signature_image(image_path, "서명")
+            else:
+                print(f"이미지 없음: {name}")  # 동일한 필드는 한 번만 삽입  # 동일한 필드는 한 번만 삽입
+                
+
     def 필드채우기(self, field_names, row_data):
         """HWP 필드에 데이터 채우기"""
         for field_name in field_names:
             if field_name in row_data.index:
                 value = self._포맷팅(row_data[field_name])
                 self.채우기(field_name, value)
-                
-    def fill_fields(self, data, field_mapping):
-        """시작하는 필드 이름을 동적으로 매핑하여 데이터를 채우기."""
-        max_fields = max(len(fields) for fields in field_mapping.values())  # 최대 필드 수 계산
 
-        for index, row in data.iterrows():
-            try:
-                for excel_col, hwp_fields in field_mapping.items():
-                    if index < len(hwp_fields):
-                        hwp_field_name = hwp_fields[index]
-                        self.채우기(hwp_field_name, row[excel_col])
-
-                # 남은 필드를 빈 값으로 초기화
-                for excel_col, hwp_fields in field_mapping.items():
-                    for idx in range(index + 1, max_fields):
-                        if idx < len(hwp_fields):
-                            self.채우기(hwp_fields[idx], "")  # 빈 값 채우기
-            except Exception as e:
-                print(f"오류 발생 (행: {index + 1}, 필드: {excel_col}): {e}")
-                
     def 홀짝필드채우기(self,excel_sheet,field_names):
         for row_index, row_data in excel_sheet.iterrows():
             try:
@@ -95,10 +126,21 @@ class HwpUtill:
 
                     # 필드 이름이 한글 필드 목록에 있는 경우만 처리
                     if field_name in field_names:
-                        self.채우기(field_name, str(field_value))
+                        self.채우기(field_name, self._포맷팅(field_value))
 
             except Exception as e:
                 print(f"오류 발생 (사전직무정보 행: {row_index + 1}, 열: {col_index}): {e}")
+
+    def fill_fields(self, data, field_mapping):
+        """시작하는 필드 이름을 동적으로 매핑하여 데이터를 채우기."""
+        for index, row in data.iterrows():
+            try:
+                for excel_col, hwp_fields in field_mapping.items():
+                    if index < len(hwp_fields):
+                        hwp_field_name = hwp_fields[index]
+                        self.채우기(hwp_field_name, row[excel_col])
+            except Exception as e:
+                print(f"오류 발생 (행: {index + 1}, 필드: {excel_col}): {e}")
 
     def 채우기(self, field_name, value):
         """필드에 값 입력"""
